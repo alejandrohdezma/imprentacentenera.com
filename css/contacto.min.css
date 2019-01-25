@@ -1,0 +1,158 @@
+
+#contacto_wrapper {
+    width: 100%;
+    margin: 0 auto 20px
+}
+
+div.input {
+    margin: 0 auto;
+    float: none
+}
+
+div.input > label {
+    font-size: 13pt;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: block
+}
+
+.contacto .areaTexto, .contacto .texto {
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 5px 10px;
+    position: relative;
+    outline: 0;
+    z-index: 2
+}
+
+.contacto .texto {
+    height: 27px;
+    width: 80%
+}
+
+.contacto .areaTexto {
+    width: 90%;
+    height: 160px;
+    resize: none
+}
+
+.contacto .areaTexto:focus, .contacto .texto:focus {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important
+}
+
+#politica {
+    display: inline;
+    margin-right: 10px;
+}
+
+.envio {
+    text-align: center
+}
+
+div.input > button.botonEnvio {
+    -moz-box-shadow: inset 0 1px 0 0 #f29c93;
+    -webkit-box-shadow: inset 0 1px 0 0 #f29c93;
+    box-shadow: inset 0 1px 0 0 #f29c93;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b00f00), color-stop(1, #8a0000)) #b00f00;
+    background: -moz-linear-gradient(center top, #b00f00 5%, #8a0000 100%) #b00f00;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b00f00', endColorstr='#8a0000');
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    text-indent: 0;
+    border: 1px solid #fff;
+    display: inline-block;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: normal;
+    height: 50px;
+    line-height: 40px;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 0 #b23e35
+}
+
+div.input > button.botonEnvio:focus, div.input > button.botonEnvio:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #8a0000), color-stop(1, #b00f00)) #8a0000;
+    background: -moz-linear-gradient(center top, #8a0000 5%, #b00f00 100%) #8a0000;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8a0000', endColorstr='#b00f00');
+    outline: 0
+}
+
+.contacto label.error, .contacto label.ok {
+    background-repeat: no-repeat;
+    background-position: 10px 40px;
+    padding: 32px 0 0 28px;
+    margin: -33px 0 0 -7px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    line-height: 30px
+}
+
+.contacto .area label.error, .contacto .area label.ok {
+    background-position: 10px 173px;
+    margin: -172px 0 0 -7px;
+    padding: 165px 0 0 28px
+}
+
+div.input > label.ok {
+    background-image: url(../images/ok.gif) !important;
+    background-color: #deefca !important;
+    color: #577530 !important
+}
+
+div.input > label.error {
+    background-image: url(../images/error.gif);
+    background-color: #f5d6d7;
+    color: #c81925
+}
+
+div.mensaje {
+    -webkit-animation: background-mensaje 5s linear infinite;
+    -moz-animation: background-mensaje 5s linear infinite;
+    animation: background-mensaje 5s linear infinite;
+    background-size: 40px 40px;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%, transparent 75%, transparent);
+    border: 1px solid;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .4);
+    -moz-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .4);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .4);
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .5)
+}
+
+div.exito {
+    background-color: #61b832;
+    border-color: #55a12c
+}
+
+div.mensajeError {
+    background-color: #de4343;
+    border-color: #c43d3d
+}
+
+div.mensaje h3 {
+    padding: 0 0 5px
+}
+
+div.mensaje p {
+    padding: 0
+}
+
+@keyframes background-mensaje {
+    from {
+        background-position: 0 0
+    }
+    to {
+        background-position: -80px 0
+    }
+}
