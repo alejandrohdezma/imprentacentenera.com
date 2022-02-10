@@ -27,9 +27,14 @@
                 --accent: #FFF0C9;
                 --border: #a6a6a6;
             }
+
+            body > header a {
+                text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+                text-decoration-line: none;
+            }
         }
 
-        header {
+        body > header {
             padding-top: 3rem;
             /* The image used */
             background-image: url("images/calendario.jpg");
@@ -39,12 +44,12 @@
             background-size: cover;
         }
 
-        header h1 {
+        body > header > h1 {
             font-size: 2rem;
             color: white;
         }
 
-        header img {
+        body > header img {
             margin-bottom: 3rem;
         }
 
