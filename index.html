@@ -10,6 +10,7 @@
     <meta name="rights" content="Artes Gráficas Centenera S.L."/>
     <meta name="description" content="Trabajos de impresión, rotulación y diseño en Zamora. Más de 25 años de experiencia en el sector."/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc5eQQfAAAAAP6FtztwNhwszOMFCdq0kC1OpkLE"></script>
     <link rel="icon" href="favicon.ico" type="image/icon type"/>
     <style>
         :root {
@@ -156,6 +157,8 @@
         footer > address {
             font-size: 1rem;
         }
+
+        .grecaptcha-badge { visibility: hidden; }
     </style>
 </head>
 <body>
@@ -259,6 +262,7 @@
             <p>¿Tienes alguna pregunta sobre algunos de nuestros servicios? ¿Un presupuesto quizá? ¡Envíanos un mensaje!</p>
 
             <input type="hidden" name="_language" value="es" />
+            <input type="hidden" name="g-recaptcha-response" value="" />
             <input type="hidden" name="_subject" value="¡Nuevo contacto desde imprentacentenera.com!" />
             
             <p>
@@ -276,6 +280,15 @@
                     <input type="checkbox" name="politica" onchange="document.getElementById('submit').disabled = !this.checked;">
                     He leído y acepto la <a target="_blank" rel="nofollow" href="avisolegal.html">política de privacidad</a>
                 </label>
+            </p>
+
+            <p>
+                <sub>
+                    Este sitio está protegido por reCAPTCHA y se aplican la 
+                    <a target="_blank" rel="external" href="https://policies.google.com/privacy">política de privacidad</a>
+                    y las <a target="_blank" rel="external" href="https://policies.google.com/terms">condiciones de servicio</a>
+                    de Google.
+                </sub>
             </p>
             
             <button id="submit" type="submit" disabled>Enviar</button>
@@ -301,27 +314,39 @@
     </footer>
 
     <script>
-        var form = document.getElementById("form");
+        const form = document.getElementById("form");
+        const status = document.getElementById("form-status");
 
         form.addEventListener("submit", e => {
             e.preventDefault();
 
-            var status = document.getElementById("form-status");
-            var data = new FormData(e.target);
+            const button = e.target.querySelector('#submit')
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>'
+            button.disabled = true
 
-            fetch(e.target.action, {
-                method: form.method,
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                status.innerHTML = "Tu mensaje ha sido enviado, nos pondremos en contacto contigo dentro de muy poco.";
-                status.style.display = "block"
-                form.reset()
-            }).catch(error => {
-                console.log(error)
-                status.innerHTML = "¡Ups! Ha habido un problema al enviar tu mensaje, inténtalo pasados unos minutos."
-                status.style.display = "block"
-            });
+            grecaptcha.ready(() => {
+                grecaptcha.execute('6Lc5eQQfAAAAAP6FtztwNhwszOMFCdq0kC1OpkLE', {action: 'form'})
+                    .then(token => {
+                        e.target.querySelector('input[name="g-recaptcha-response"]').value = token
+
+                        fetch(e.target.action, {
+                            method: e.target.method,
+                            body: new FormData(e.target),
+                            headers: { 'Accept': 'application/json' }
+                        }).then(response => {
+                            status.innerHTML = "Tu mensaje ha sido enviado, nos pondremos en contacto contigo dentro de muy poco.";
+                            status.style.display = "block"
+                            button.innerHTML = 'Enviar'
+                            e.target.reset()
+                        }).catch(error => {
+                            console.log(error)
+                            status.innerHTML = "¡Ups! Ha habido un problema al enviar tu mensaje, inténtalo pasados unos minutos."
+                            status.style.display = "block"
+                            button.innerHTML = 'Enviar'
+                            button.disabled = false
+                        })
+                    })
+            })
         });
     </script>
 </body>
