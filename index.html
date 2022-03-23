@@ -11,7 +11,6 @@
     <meta name="description" content="Trabajos de impresión, rotulación y diseño en Zamora. Más de 25 años de experiencia en el sector."/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="favicon.ico" type="image/icon type"/>
-    <script type="text/javascript" src="http://livejs.com/live.js"></script>
     <style>
         :root {
             scroll-behavior: smooth;
@@ -123,14 +122,35 @@
             }
         }
 
-        details {
-            color: white;
+        ul.cloud {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            line-height: 2.75rem;
+            width: 100%;
         }
 
-        @media (prefers-color-scheme: dark) {
-            details {
-                color: #3e3e3e;
-            }
+        ul.cloud li[data-weight="1"] { --size: 1; }
+        ul.cloud li[data-weight="2"] { --size: 2; }
+        ul.cloud li[data-weight="3"] { --size: 3; }
+        ul.cloud li[data-weight="4"] { --size: 4; }
+        ul.cloud li[data-weight="5"] { --size: 5; }
+        ul.cloud li[data-weight="6"] { --size: 6; }
+        ul.cloud li[data-weight="7"] { --size: 7; }
+        ul.cloud li[data-weight="8"] { --size: 8; }
+        ul.cloud li[data-weight="9"] { --size: 9; }
+
+        ul.cloud li {
+            --size: 4;
+            color: var(--accent);
+            font-size: calc(var(--size) * 0.25rem + 0.5rem);
+            display: block;
+            padding: 0.125rem 0.25rem;
+            position: relative;
+            opacity: calc((15 - (9 - var(--size))) / 15); 
         }
 
         footer > address {
@@ -205,56 +225,33 @@
             mediante el <b><a href="#contacto">formulario de contacto</a></b> o por <a href="tel:980528267">teléfono</a>.
         </p>
 
-        <details>
-            <summary>Impresión</summary>
-            <p>Utilizando las materias primas de más alta calidad y un personal totalmente capacitado, brindamos al cliente un servicio de impresión rápido, de alta calidad y
-                que satisfaga al completo los requerimientos del mismo.</p>
-            <ul>
-                <li>Calendarios</li>
-                <li>Carteles</li>
-                <li>Catálogos</li>
-                <li>Comandas</li>
-                <li>Diplomas</li>
-                <li>Folletos</li>
-                <li>Invitaciones</li>
-                <li>Libros</li>
-                <li>Manuales</li>
-                <li>Posters</li>
-                <li>Revistas</li>
-                <li>Sobres</li>
-                <li>Talonarios</li>
-                <li>Tarjetas</li>
-                <li>Trípticos, etc.</li>
-            </ul>
-        </details>
-
-        <details>
-            <summary>Rotulación</summary>
-            <p>¡Nuevos servicios de rotulación!</p>
-            <ul>
-                <li>Rotulación de vehículos</li>
-                <li>Tintado de lunas</li>
-                <li>Cartelería gran formato</li>
-                <li>Roll-up</li>
-                <li>Rotulación de escaparates</li>
-                <li>Lonas</li>
-                <li>Cartón pluma</li>
-                <li>¡Y mucho más!</li>
-            </ul>
-        </details>
-
-        <details>
-            <summary>Diseño</summary>
-            <p>
-                Ofrecemos un servicio de diseño gráfico a nuestros clientes, que darán soluciones innovadoras y
-                personalizadas, utilizando para ello los equipos y programas óptimos para la tarea.
-            </p>
-        </details>
-
-        <details>
-            <summary>Otros Servicios</summary>
-            <p>También ofrecemos servicios de impresión digital y Plotter, así como grabado de sellos.</p>
-        </details>
+        <ul class="cloud">
+            <li data-weight="6">Rotulación de escaparates</li>
+            <li data-weight="5">Roll-up</li>
+            <li data-weight="2">Manuales</li>
+            <li data-weight="5">Cartelería gran formato</li>
+            <li data-weight="3">Diseño gráfico</li>
+            <li data-weight="9">Impresión</li>
+            <li data-weight="5">Plotter</li>
+            <li data-weight="4">Calendarios</li>
+            <li data-weight="3">Comandas</li>
+            <li data-weight="4">Cartón pluma</li>
+            <li data-weight="3">Invitaciones</li>
+            <li data-weight="5">Trípticos</li>
+            <li data-weight="8">Rotulación de vehículos</li>
+            <li data-weight="5">Tarjetas</li>
+            <li data-weight="2">Folletos</li>
+            <li data-weight="7">Lonas</li>
+            <li data-weight="2">Sobres</li>
+            <li data-weight="1">Posters</li>
+            <li data-weight="5">Carteles</li>
+            <li data-weight="4">Revistas</li>
+            <li data-weight="9">Tintado de lunas</li>
+            <li data-weight="3">Talonarios</li>
+            <li data-weight="2">Catálogos</li>
+            <li data-weight="1">Diplomas</li>
+            <li data-weight="4">Libros</li>
+        </ul>
 
         <h2 id="contacto">Contáctanos!</h2>
 
