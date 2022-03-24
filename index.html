@@ -203,7 +203,7 @@
         </p>
         <p><i class="fab fa-instagram"></i> ¡También puedes seguirnos en <b><a target="_blank" rel="external" href="https://www.instagram.com/imprentacentenera">Instagram</a></b>!</p>
 
-        <div class="row"> 
+        <div id="rotulacion-images" class="row"> 
             <div class="column">
                 <img src="images/rotulacion/rotulacion1.jpeg" />
                 <img src="images/rotulacion/rotulacion0.jpeg" />
@@ -314,40 +314,50 @@
     </footer>
 
     <script>
-        const form = document.getElementById("form");
-        const status = document.getElementById("form-status");
+        const images = []
+
+        while(images.length < 9){
+            const random = Math.floor(Math.random() * 21)
+            if(images.indexOf(random) === -1) images.push(random)
+        }
+
+        document.getElementById("rotulacion-images").querySelectorAll("img").forEach((image, index) => {
+            image.src = `images/rotulacion/rotulacion${images[index]}.jpeg`
+        })
+
+        const form = document.getElementById("form")
+        const status = document.getElementById("form-status")
 
         form.addEventListener("submit", e => {
-            e.preventDefault();
+            e.preventDefault()
 
             const button = e.target.querySelector('#submit')
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>'
             button.disabled = true
 
             grecaptcha.ready(() => {
-                grecaptcha.execute('6Lc5eQQfAAAAAP6FtztwNhwszOMFCdq0kC1OpkLE', {action: 'form'})
-                    .then(token => {
-                        e.target.querySelector('input[name="g-recaptcha-response"]').value = token
+                grecaptcha.execute('6Lc5eQQfAAAAAP6FtztwNhwszOMFCdq0kC1OpkLE', {action: 'form'}).then(token => {
+                    e.target.querySelector('input[name="g-recaptcha-response"]').value = token
 
-                        fetch(e.target.action, {
-                            method: e.target.method,
-                            body: new FormData(e.target),
-                            headers: { 'Accept': 'application/json' }
-                        }).then(response => {
-                            status.innerHTML = "Tu mensaje ha sido enviado, nos pondremos en contacto contigo dentro de muy poco.";
-                            status.style.display = "block"
-                            button.innerHTML = 'Enviar'
-                            e.target.reset()
-                        }).catch(error => {
-                            console.log(error)
-                            status.innerHTML = "¡Ups! Ha habido un problema al enviar tu mensaje, inténtalo pasados unos minutos."
-                            status.style.display = "block"
-                            button.innerHTML = 'Enviar'
-                            button.disabled = false
-                        })
+                    fetch(e.target.action, {
+                        method: e.target.method,
+                        body: new FormData(e.target),
+                        headers: { 'Accept': 'application/json' }
+                    }).then(response => {
+                        status.innerHTML = "Tu mensaje ha sido enviado, nos pondremos en contacto contigo dentro de muy poco."
+                        status.style.display = "block"
+                        button.innerHTML = 'Enviar'
+                        e.target.reset()
+                    }).catch(error => {
+                        console.log(error)
+                        status.innerHTML = "¡Ups! Ha habido un problema al enviar tu mensaje, inténtalo pasados unos minutos."
+                        status.style.display = "block"
+                        button.innerHTML = 'Enviar'
+                        button.disabled = false
                     })
+                })
             })
-        });
+        })
     </script>
 </body>
 </html>
